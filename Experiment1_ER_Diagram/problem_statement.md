@@ -22,10 +22,8 @@ FlexiFit Gym wants a database to manage its members, trainers, and fitness progr
 - Payments tracked for memberships and sessions.
 
 ### ER Diagram:
-<img width="666" height="622" alt="image" src="https://github.com/user-attachments/assets/6aca3e85-e1eb-46aa-b0fe-0705461b24da" />
-
- 
-
+*Paste or attach your diagram here*  
+![ER Diagram](er_diagram_fitness.png)
 
 ### Entities and Attributes
 
@@ -108,31 +106,44 @@ A popular restaurant wants to manage reservations, orders, and billing.
 - Waiters assigned to serve reservations.
 
 ### ER Diagram:
-*Paste or attach your diagram here*  
-![ER Diagram](er_diagram_restaurant.png)
+
+![DBMS Workshop_page-0001](https://github.com/user-attachments/assets/b6f3b813-3445-4e02-8e76-d2c81bd23b30)
+
 
 ### Entities and Attributes
 
-| Entity | Attributes (PK, FK) | Notes |
-|--------|--------------------|-------|
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
-|        |                    |       |
+| Entity     | Attributes (PK, FK)     | Notes     |
+|--------    |--------------------     |-------    |
+|CUSTOMER    |Customer_ID (PK), Name,Phone, Email |Each customer makes reservations.      |     
+|RESERVATION |Reservation_ID (PK), Customer_ID (FK), Waiter |Reservation placed by a customer, served by a waiter.                 |
+|ORDER |Order_ID (PK), Food, Date, Category |An order placed under a reservation.            |
+|DISH |Dish_ID (PK), Dish_Name |Represents food items offered.            |    
+|BILL |Bill_ID (PK), Order_ID (FK), TotalAmount |Bill generated for each order.            |         
 
 ### Relationships and Constraints
 
 | Relationship | Cardinality | Participation | Notes |
 |--------------|------------|---------------|-------|
-|              |            |               |       |
-|              |            |               |       |
-|              |            |               |       |
+|CUSTOMER – RESERVATION |1 : M |Customer books many reservations |"books" relationship              | 
+|RESERVATION – ORDER |1 : M |A reservation can have many orders |"places" relationship              |            
+|ORDER – ORDER_DETAILS |1 : M |Each order can have multiple dishes |"order composition"               |    
+|ORDER_DETAILS – DISH |M : 1 |Each order detail belongs to one dish |Linked via Dish_ID              |
+|ORDER – BILL |1 : 1 |Each order generates one bill |Bill includes total amount               |       
 
 ### Assumptions
-- 
-- 
-- 
+
+- Customer is uniquely identified by Customer_ID.
+
+- Reservation needs both a customer and a waiter assigned.
+
+- Orders are tied to reservations, not directly to customers.
+
+- Each order produces exactly one bill.
+
+- Categories classify orders (e.g., service type, menu type).
+
+- Dish information is stored separately and linked via Dish_ID.
+
 
 ---
 
