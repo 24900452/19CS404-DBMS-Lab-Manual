@@ -36,9 +36,9 @@ GROUP BY column_name
 HAVING condition;
 ```
 
-Developed By : Lokeshwaran S
+Developed By : Jothi ganesh P
 
-Register No : 212224240080
+Register No : 212224240065
 
 **Question 1**
 --
